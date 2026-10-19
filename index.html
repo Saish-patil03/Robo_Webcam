@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robot Camera Stream Dashboard</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="app-header">
+    <div class="header-brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M23 7l-7 5 7 5V7z"></path>
+        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+      </svg>
+      <h1>Robot Camera Live Stream</h1>
+    </div>
+    <div class="header-status">
+      <span class="status-badge" id="status-badge">
+        <span class="status-dot"></span> Disconnected
+      </span>
+    </div>
+  </header>
+
+  <main class="main-layout">
+    
+    <!-- Video Stream Display Area -->
+    <section class="video-section">
+      <div class="stream-card">
+        
+        <!-- Live Stream Image Tag -->
+        <img 
+          id="camera-feed" 
+          class="camera-feed" 
+          alt="Live Camera Feed"
+          style="display: none;"
+        >
+
+        <!-- Placeholder when disconnected or on error -->
+        <div class="stream-placeholder" id="stream-placeholder">
+          <div class="placeholder-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M23 7l-7 5 7 5V7z"></path>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+            </svg>
+          </div>
+          <h2 id="placeholder-title">No Camera Connected</h2>
+          <p id="placeholder-msg">Enter your mobile phone IP Webcam link below and click Connect to start the live video feed.</p>
+        </div>
+
+        <!-- Video Overlay Controls (Fullscreen) -->
+        <div class="feed-overlay" id="feed-overlay" style="display: none;">
+          <span class="live-pill">● LIVE</span>
+          <button class="btn-fullscreen" id="btn-fullscreen" title="Toggle Fullscreen">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <polyline points="9 21 3 21 3 15"></polyline>
+              <line x1="21" y1="3" x2="14" y2="10"></line>
+              <line x1="3" y1="21" x2="10" y2="14"></line>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- IP Camera Configuration Panel -->
+      <div class="config-panel">
+        <label for="stream-url" class="config-label">Camera Stream URL (IP Webcam / MJPEG):</label>
+        
+        <div class="input-row">
+          <input 
+            type="text" 
+            id="stream-url" 
+            class="url-input" 
+            placeholder="http://172.16.237.254:8080/video"
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <button class="btn-connect" id="btn-connect">Connect</button>
+          <button class="btn-disconnect" id="btn-disconnect">Disconnect</button>
+        </div>
+
+        <!-- Quick Presets -->
+        <div class="presets-row">
+          <span class="presets-title">Quick Presets:</span>
+          <button class="preset-btn" data-url="http://172.16.237.254:8080/video">Phone (:8080/video)</button>
+          <button class="preset-btn" data-url="http://192.168.1.50:4747/video">DroidCam (:4747/video)</button>
+          <button class="preset-btn" data-url="http://192.168.1.50:81/stream">ESP32-CAM (:81/stream)</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
