@@ -52,12 +52,12 @@ You can open `index.html` directly in any web browser without running a server:
 1. Install **IP Webcam** by Pavel Khlebovich from the Google Play Store.
 2. Connect your phone and laptop to the **same Wi-Fi network** (or connect your laptop to your phone's personal hotspot).
 3. Open the app, scroll to the bottom, and tap **"Start server"**.
-4. Note the IP address displayed on your phone screen (e.g. `http://192.168.1.50:8080`).
+4. Note the IP address displayed on your phone screen 
 5. In the dashboard input field, enter:
    ```text
    http://<your-phone-ip>:8080/video
    ```
-   *(e.g., `http://172.16.237.254:8080/video`)*
+   
 6. Click **Connect**.
 
 ---
